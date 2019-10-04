@@ -1,10 +1,25 @@
+function renderBalance( data ) {
+    let HTML = '';
 
-function renderMetai( data ) {
-    console.log(data);
+    for ( let i=0; i<data.length; i++ ) {
 
-    HTML += `<div class="table-content"></div>
-        <div class="table-head"></div>
-        <img src="${obj.photo}" title="alt"> </a>`;
+      let item = data[i]
+        if (typeof item.expense === 'undefined')   item.expense === '0' ;
+            
+            
+        
+        HTML +=   `<div class="table-row">
+                        <div class="cell">${i+1}</div>
+                        <div class="cell">${item.month}</div>
+                        <div class="cell">${item.expense}.Eur</div>
+                        <div class="cell">${item.income}.Eur</div>
+                        <div class="cell">${item.account}.Eur</div>
+                      </div>`;
+    
 
-    return document.getElementById('months').innerHTML = HTML;
-}
+        }
+return document.querySelector( '.table > .table-content' ).innerHTML = HTML;
+    }
+
+
+
