@@ -4,7 +4,12 @@ function renderBalance( data ) {
     for ( let i=0; i<data.length; i++ ) {
 
       let item = data[i]
-        if (typeof item.expense === 'undefined')   item.expense === '0' ;
+        if (typeof(item.expense) !== 'number') {
+          item.expense = 0;
+        } 
+       else if (typeof(item.income) !== 'number') {
+        item.income = 0;
+       }
             
             
         
@@ -14,7 +19,8 @@ function renderBalance( data ) {
                         <div class="cell">${item.expense}.Eur</div>
                         <div class="cell">${item.income}.Eur</div>
                         <div class="cell">${item.account}.Eur</div>
-                      </div>`;
+                        </div>`;
+                        // <div class="cell">${item.balance}.Eur</div>
     
 
         }
